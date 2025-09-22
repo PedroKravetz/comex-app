@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alura.comex.dto.request.CadastrarCategoriaRequest;
 import br.com.alura.comex.service.CategoriaService;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
@@ -21,6 +22,7 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @PostMapping
+    @Transactional
     public ResponseEntity<String> cadastra(@RequestBody @Valid CadastrarCategoriaRequest cadastrarCategoria,
             BindingResult result) {
         if (result.hasErrors()) {

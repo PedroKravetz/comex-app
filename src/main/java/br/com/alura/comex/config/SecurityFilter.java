@@ -2,15 +2,12 @@ package br.com.alura.comex.config;
 
 import java.io.IOException;
 
-import javax.management.RuntimeErrorException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import br.com.alura.comex.model.Usuario;
 import br.com.alura.comex.repository.UsuarioRepository;
 import br.com.alura.comex.service.TokenService;
 import jakarta.servlet.FilterChain;
