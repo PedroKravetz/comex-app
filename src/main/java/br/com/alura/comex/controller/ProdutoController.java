@@ -25,26 +25,14 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
-    @Autowired
-    private CategoriaService categoriaService;
-
     @PostMapping
     public ResponseEntity<String> cadastra(@RequestBody @Valid CadastrarProdutosRequest body, BindingResult result) {
         if (result.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        Produto produto = body.toProduto();
-        Optional<Categoria> categoria = categoriaService.getCategoria(body.getIdCategoria());
-        if (!categoria.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        return produtoService.cadastrar(body);
 
-        produto.setCategoria(categoria.get());
-
-        produtoService.cadastrar(produto);
-
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

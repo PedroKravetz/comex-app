@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alura.comex.dto.request.CadastrarCategoriaRequest;
-import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.service.CategoriaService;
 import jakarta.validation.Valid;
 
@@ -28,10 +27,8 @@ public class CategoriaController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        Categoria categoria = cadastrarCategoria.toCategoria();
-        categoria.setAtiva(true);
         try {
-            categoriaService.cadastrar(categoria);
+            categoriaService.cadastrar(cadastrarCategoria);
         } catch (Exception e) {
             System.err.println(e);
             return new ResponseEntity<>(HttpStatus.CONFLICT);

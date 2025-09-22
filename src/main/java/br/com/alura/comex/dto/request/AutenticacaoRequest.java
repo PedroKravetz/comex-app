@@ -1,0 +1,29 @@
+package br.com.alura.comex.dto.request;
+
+import jakarta.validation.constraints.NotBlank;
+
+public class AutenticacaoRequest {
+
+    @NotBlank
+    private String login;
+
+    @NotBlank
+    private String senha;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+}

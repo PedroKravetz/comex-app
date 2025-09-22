@@ -6,6 +6,7 @@ import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.alura.comex.dto.request.CadastrarCategoriaRequest;
 import br.com.alura.comex.model.Categoria;
 import br.com.alura.comex.repository.CategoriaRepository;
 
@@ -15,9 +16,9 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    public void cadastrar(Categoria categoria) throws PSQLException {
-        if (categoria == null)
-            return;
+    public void cadastrar(CadastrarCategoriaRequest cadastrarCategoria) throws PSQLException {
+        Categoria categoria = cadastrarCategoria.toCategoria();
+        categoria.setAtiva(true);
         categoriaRepository.save(categoria);
     }
 
